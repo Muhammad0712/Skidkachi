@@ -26,6 +26,8 @@ import { StatusModule } from "./status/status.module";
 import { Status } from "./status/models/status.model";
 import { StoreModule } from "./store/store.module";
 import { Store } from "./store/models/store.model";
+import { AdminsModule } from './admins/admins.module';
+import { Admin } from "./admins/models/admin.model";
 
 @Module({
   imports: [
@@ -57,6 +59,7 @@ import { Store } from "./store/models/store.model";
         District,
         Status,
         Store,
+        Admin
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -75,6 +78,7 @@ import { Store } from "./store/models/store.model";
     DistrictModule,
     StatusModule,
     StoreModule,
+    AdminsModule,
   ],
   controllers: [],
   providers: [],

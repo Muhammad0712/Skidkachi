@@ -50,3 +50,10 @@ async function start() {
   }
 }
 start();
+
+
+// git hubga push qilish
+
+// git add .
+// git commit -m "message"
+// git push
