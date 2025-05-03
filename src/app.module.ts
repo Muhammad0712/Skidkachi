@@ -12,12 +12,20 @@ import { TypeModule } from "./type/type.module";
 import { Type } from "./type/models/type.model";
 import { CategoryModule } from "./category/category.module";
 import { Category } from "./category/models/category.model";
-import { SocialMediaTypeModule } from './social_media_type/social_media_type.module';
+import { SocialMediaTypeModule } from "./social_media_type/social_media_type.module";
 import { SocialMediaType } from "./social_media_type/models/social_media_type.model";
-import { StoreSocialLinksModule } from './store_social_links/store_social_links.module';
+import { StoreSocialLinksModule } from "./store_social_links/store_social_links.module";
 import { StoreSocialLink } from "./store_social_links/models/store_social_link.model";
-import { DiscountsModule } from './discounts/discounts.module';
+import { DiscountsModule } from "./discounts/discounts.module";
 import { Discount } from "./discounts/models/discount.model";
+import { RegionModule } from "./region/region.module";
+import { Region } from "./region/models/region.model";
+import { DistrictModule } from "./district/district.module";
+import { District } from "./district/models/district.model";
+import { StatusModule } from "./status/status.module";
+import { Status } from "./status/models/status.model";
+import { StoreModule } from "./store/store.module";
+import { Store } from "./store/models/store.model";
 
 @Module({
   imports: [
@@ -38,7 +46,18 @@ import { Discount } from "./discounts/models/discount.model";
       username: process.env.PG_USER,
       password: process.env.PG_PASSWORD,
       database: process.env.PG_DB,
-      models: [User, Type, Category, SocialMediaType, StoreSocialLink, Discount],
+      models: [
+        User,
+        Type,
+        Category,
+        SocialMediaType,
+        StoreSocialLink,
+        Discount,
+        Region,
+        District,
+        Status,
+        Store,
+      ],
       autoLoadModels: true,
       sync: { alter: true },
       logging: false,
@@ -52,6 +71,10 @@ import { Discount } from "./discounts/models/discount.model";
     SocialMediaTypeModule,
     StoreSocialLinksModule,
     DiscountsModule,
+    RegionModule,
+    DistrictModule,
+    StatusModule,
+    StoreModule,
   ],
   controllers: [],
   providers: [],
