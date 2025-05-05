@@ -1,4 +1,4 @@
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 interface IAdminCreationAttr {
     fullname: string;
@@ -9,6 +9,8 @@ interface IAdminCreationAttr {
     is_creator: boolean;
     is_active: boolean;
 }
+
+@Table({ tableName: 'admins', timestamps: false })
 export class Admin extends Model<Admin, IAdminCreationAttr> {
 
     @Column({

@@ -1,4 +1,4 @@
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 import { CreateDistrictDto } from "../dto/create-district.dto";
 
 interface IDistrictCreationAttr {
@@ -6,6 +6,7 @@ interface IDistrictCreationAttr {
     region_id: number
 }
 
+@Table({tableName: 'districts', timestamps: false})
 export class District extends Model<District, IDistrictCreationAttr> {
     
     @Column({

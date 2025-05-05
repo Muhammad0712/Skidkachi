@@ -1,9 +1,10 @@
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 interface IRegionCreationAttr {
     name: string;
 }
 
+@Table({ tableName: 'region', timestamps: false })
 export class Region extends Model<Region, IRegionCreationAttr> {
 
     @Column({

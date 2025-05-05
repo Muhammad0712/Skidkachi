@@ -28,6 +28,17 @@ import { StoreModule } from "./store/store.module";
 import { Store } from "./store/models/store.model";
 import { AdminsModule } from './admins/admins.module';
 import { Admin } from "./admins/models/admin.model";
+import { Bot } from "./bots/model/bot.model";
+import { AdsModule } from './ads/ads.module';
+import { Ad } from "./ads/models/ad.model";
+import { ReviewsModule } from './reviews/reviews.module';
+import { Review } from "./reviews/models/review.model";
+import { FavouritesModule } from './favourites/favourites.module';
+import { Favourite } from "./favourites/models/favourite.model";
+import { StoreSubscribesModule } from './store_subscribes/store_subscribes.module';
+import { StoreSubscribe } from "./store_subscribes/models/store_subscribe.model";
+import { MediaModule } from './media/media.module';
+import { Media } from "./media/models/media.model";
 
 @Module({
   imports: [
@@ -59,7 +70,13 @@ import { Admin } from "./admins/models/admin.model";
         District,
         Status,
         Store,
-        Admin
+        Admin,
+        Bot,
+        Ad,
+        Review,
+        Favourite,
+        StoreSubscribe,
+        Media
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -79,6 +96,11 @@ import { Admin } from "./admins/models/admin.model";
     StatusModule,
     StoreModule,
     AdminsModule,
+    AdsModule,
+    ReviewsModule,
+    FavouritesModule,
+    StoreSubscribesModule,
+    MediaModule,
   ],
   controllers: [],
   providers: [],

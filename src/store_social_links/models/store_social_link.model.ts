@@ -1,4 +1,4 @@
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 interface IStoreSocialLinkCreationAttr {
     url: string;
@@ -7,9 +7,10 @@ interface IStoreSocialLinkCreationAttr {
     social_media_type_id: number;
 }
 
+@Table({ tableName: "store_social_links", timestamps: false })
 export class StoreSocialLink extends Model<StoreSocialLink, IStoreSocialLinkCreationAttr> {
     @Column({
-        type: DataType.STRING,
+        type: DataType.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     })

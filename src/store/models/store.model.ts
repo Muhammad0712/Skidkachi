@@ -1,4 +1,4 @@
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 interface IStoreCreationAttr {
     name: string;
@@ -15,6 +15,7 @@ interface IStoreCreationAttr {
     weekday: number;
 }
 
+@Table({ tableName: "stores", timestamps: false })
 export class Store extends Model<Store, IStoreCreationAttr> {
     @Column({
         type: DataType.INTEGER,

@@ -8,14 +8,18 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 import { InjectModel } from "@nestjs/sequelize";
 import { User } from "./models/user.model";
 import * as bcrypt from "bcrypt";
+import * as otpGenerator from "otp-generator";
 import { MailService } from "../mail/mail.service";
+import { PhoneUserDto } from "./dto/phone-user.dto";
+import { BotsService } from "../bots/bots.service";
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectModel(User)
     private readonly userModel: typeof User,
-    private readonly mailService: MailService
+    private readonly mailService: MailService,
+    private readonly botService: BotsService
   ) {}
 
   async create(createUserDto: CreateUserDto) {
@@ -46,8 +50,8 @@ export class UsersService {
     return this.userModel.findAll({ include: { all: true } });
   }
 
-  findOne(id: number):Promise<User  |null> {
-    return this.userModel.findByPk(id)
+  findOne(id: number): Promise<User | null> {
+    return this.userModel.findByPk(id);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
@@ -81,5 +85,23 @@ export class UsersService {
       { where: { id } }
     );
     return updatedUser;
+  }
+
+  async newOtp(phoneUserDto: PhoneUserDto) {
+    const phone_number = phoneUserDto.phone;
+    const ot = otpGenerator.generate(4, {
+      upperCaseAlphabets: false,
+      lowerCaseAlphabets: false,
+      specialChars: false,
+    });
+
+    // _______________________BOT__________________________
+    const isSend = await this.botService.sendOtp(phone_number, ot);
+    if (!isSend) {
+      throw new BadRequestException("Avval botdan ro'yxatdan o'tgansiz!");
+    }
+    return { message: `Otp botga yuborildi!` };
+    // _______________________SMS__________________________
+    // ______________________EMAIL_________________________
   }
 }

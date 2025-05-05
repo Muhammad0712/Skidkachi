@@ -1,10 +1,11 @@
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 interface IStatusCreationAttr {
     name: string;
     description: string;
 }
 
+@Table({ tableName: 'status', timestamps: false })
 export class Status extends Model<Status, IStatusCreationAttr> {
 
     @Column({

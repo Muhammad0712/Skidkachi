@@ -1,4 +1,4 @@
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 interface IDiscountCreationAttr {
     store_id: number;
@@ -14,6 +14,7 @@ interface IDiscountCreationAttr {
     type_id: number;
 }
 
+@Table({ tableName: 'discounts', timestamps: false })
 export class Discount extends Model<Discount, IDiscountCreationAttr> {
 
     @Column({
